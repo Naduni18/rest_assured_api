@@ -1,17 +1,4 @@
-{
-    "lotto": {
-        "lottoId": 5,
-        "winning-numbers": [2, 45, 34, 23, 7, 5, 3],
-        "winners": [{
-            "winnerId": 23,
-            "numbers": [2, 45, 34, 23, 3, 5]
-        }, {
-            "winnerId": 54,
-            "numbers": [52, 3, 12, 11, 18, 22]
-        }]
-    }
-    
-    
+[
           {
               "id": 2,
               "name": "An ice sculpture",
@@ -40,6 +27,95 @@
                   "latitude": 54.4,
                   "longitude": -32.7
               }
-          }
-      
+          },
+    {  
+   "store":{  
+      "book":[  
+         {  
+            "author":"Nigel Rees",
+            "category":"reference",
+            "price":8.95,
+            "title":"Sayings of the Century"
+         },
+         {  
+            "author":"Evelyn Waugh",
+            "category":"fiction",
+            "price":12.99,
+            "title":"Sword of Honour"
+         },
+         {  
+            "author":"Herman Melville",
+            "category":"fiction",
+            "isbn":"0-553-21311-3",
+            "price":8.99,
+            "title":"Moby Dick"
+         },
+         {  
+            "author":"J. R. R. Tolkien",
+            "category":"fiction",
+            "isbn":"0-395-19395-8",
+            "price":22.99,
+            "title":"The Lord of the Rings"
+         }
+      ]
+   }
+},
+    {
+"lotto":{
+ "lottoId":5,
+ "winning-numbers":[2,45,34,23,7,5,3],
+ "winners":[{
+   "winnerId":23,
+   "numbers":[2,45,34,23,3,5]
+ },{
+   "winnerId":54,
+   "numbers":[52,3,12,11,18,22]
+ }]
 }
+},
+    {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Product set",
+    "type": "array",
+    "items": {
+        "title": "Product",
+        "type": "object",
+        "properties": {
+            "id": {
+                "description": "The unique identifier for a product",
+                "type": "number"
+            },
+            "name": {
+                "type": "string"
+            },
+            "price": {
+                "type": "number",
+                "minimum": 0,
+                "exclusiveMinimum": true
+            },
+            "tags": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+            },
+            "dimensions": {
+                "type": "object",
+                "properties": {
+                    "length": {"type": "number"},
+                    "width": {"type": "number"},
+                    "height": {"type": "number"}
+                },
+                "required": ["length", "width", "height"]
+            },
+            "warehouseLocation": {
+                "description": "Coordinates of the warehouse with the product",
+                "$ref": "http://json-schema.org/geo"
+            }
+        },
+        "required": ["id", "name", "price"]
+    }
+}
+      ]
